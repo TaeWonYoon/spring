@@ -9,7 +9,7 @@
 <form action="listAll" method ="get">
 <button type = "submit"> CRud게시판 가기</button>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${serverTime}.ss </P>
 </form>
 </body>
 </html>
