@@ -33,10 +33,10 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-    public void updateViewCnt(Integer bno) throws Exception {
-      session.update(namespace + ".updateViewCnt", bno);
-
-    }
+	public void boardHit(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		session.update(namespace + ".updateViewCnt", bno);
+	}
 
 	@Override
 	public void delete(Integer bno) throws Exception {

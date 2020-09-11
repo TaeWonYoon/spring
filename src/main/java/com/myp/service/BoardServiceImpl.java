@@ -4,11 +4,13 @@ package com.myp.service;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.myp.domain.BoardVO;
 import com.myp.persistence.BoardDAO;
 
 @Service
-
 public class BoardServiceImpl implements BoardService {
 
 	 @Inject
@@ -18,10 +20,11 @@ public class BoardServiceImpl implements BoardService {
 	public void regist(BoardVO board) throws Exception {
 		dao.create(board);
 	}
-
+	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(Integer bno) throws Exception {
-		dao.updateViewCnt(bno);
+			   dao.boardHit(bno);
 		return dao.read(bno);
 	}
 

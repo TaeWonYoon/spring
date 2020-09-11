@@ -12,19 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myp.domain.BoardVO;
-
 import com.myp.service.BoardService;
+
+;
 
 
 
 @Controller 
-
-@RequestMapping(value = "/") 
-
 public class BoardController {
 
 	@Inject   
-
 	private BoardService service; 
 
 	@RequestMapping(value= "/listAll", method = RequestMethod.GET)

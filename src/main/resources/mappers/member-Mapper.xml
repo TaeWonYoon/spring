@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myp.mapper.UserMapper">
+	<!-- 회원가입 -->
+	<insert id="register">
+		insert into member (userid, userpass, username, email)
+		values( #{userid}, #{userpass}, #{username}, #{email} )
+	</insert>
+	
+	<select id="login" resultType="com.myp.domain.MemberVO">
+		select userid, userpass, username
+		from member
+		where userid = #{userid} and userpass = #{userpass} 
+	</select>
+	
+	<update id="memberUpdate">
+		UPDATE MEMBER SET 
+		USERPASS = #{userpass},
+		USERNAME = #{username}
+		WHERE USERID = #{userid}
+	</update>
+	
+	<delete id="memberDelete">
+		DELETE FROM MEMBER
+		WHERE USERID = #{userid}
+		  AND USERPASS = #{userpass} 
+	</delete>
+	
+	<select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE USERID = #{userid}
+			AND USERPASS = #{userpass}
+	</select>
+	
+	<select id="idChk" resultType="int">
+	SELECT COUNT(*) FROM MEMBER
+	WHERE USERID = #{userid}
+	</select>
+	
+</mapper>
